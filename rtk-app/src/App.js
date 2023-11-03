@@ -32,7 +32,7 @@ function App() {
 
     return (
         <div className={'container'}>
-            <h1>Contact List</h1>
+            <h1>RTK Query Contact List</h1>
             <ContactList/>
             <button className={'btn'} onClick={onClick}>CREATE NEW CONTACT</button>
         </div>
