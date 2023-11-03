@@ -31,9 +31,10 @@ function App() {
     }
 
     return (
-        <div>
-            <button onClick={onClick}>CREATE NEW CONTACT</button>
+        <div className={'container'}>
+            <h1>Contact List</h1>
             <ContactList/>
+            <button className={'btn'} onClick={onClick}>CREATE NEW CONTACT</button>
         </div>
     );
 }
