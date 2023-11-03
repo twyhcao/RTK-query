@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import ContactList from "./ContactList";
+import {createServer} from "miragejs"
+import {useCreateContactMutation} from "./apiSlice";
+
+let server = createServer({
+    fixtures: {
+        contacts: [
+            {id: 1, name: "Bob"},
+            {id: 2, name: "Thiago"},
+            {id: 3, name: "Alan"},
+        ],
+    },
+    routes() {
+        this.get("https://api/contacts", (schema, request) => {
+            return schema.db.contacts;
+        }, {timing: 200})
+
+        this.post("https://api/contact", (schema, request) => {
+            schema.db.contacts.insert(JSON.parse(request.requestBody))
+        }, {timing: 2000})
+    },
+})
+
+const names = ["Emily", "Benjamin", "Maya", "Liam", "Olivia", "Ethan", "Ava", "Noah", "Mia", "Alexander"];
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [trigger] = useCreateContactMutation()
+    const onClick = () => {
+        const name = names[Math.floor(Math.random() * names.length)];
+        trigger({name})
+    }
+
+    return (
+        <div>
+            <button onClick={onClick}>CREATE NEW CONTACT</button>
+            <ContactList/>
+        </div>
+    );
 }
 
 export default App;
