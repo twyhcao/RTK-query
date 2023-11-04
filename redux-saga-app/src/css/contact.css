@@ -6,7 +6,6 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
     margin: 0;
 }
 
@@ -18,24 +17,25 @@ h1 {
     margin: 1rem 0;
 }
 
-.input {
+.search-input {
     border: none;
     color: #444;
-    font-size: 2rem;
-    padding: 1rem 2rem;
+    font-size: 1.5rem;
     display: block;
-    width: 100%;
+    width: 42rem;
+    padding: 1rem;
+    margin: 2rem auto;
 }
 
-.input::placeholder {
+.search-input::placeholder {
     color: #d5d5d5;
 }
 
-.input:focus {
+.search-input:focus {
     outline-color: rgb(179, 131, 226);
 }
 
-.todos {
+.contacts {
     background-color: #fff;
     padding: 0;
     margin: 0 auto;
@@ -44,7 +44,7 @@ h1 {
     width: 40rem;
 }
 
-.todos li {
+.contacts li {
     border-top: 1px solid #e5e5e5;
     cursor: pointer;
     font-size: 1.5rem;
@@ -57,9 +57,17 @@ h1 {
     cursor: pointer;
     font-size: 1.5rem;
     font-weight: 700;
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
     text-align: center;
     background: rgba(179, 131, 226, 0.4);
-    margin: 0 auto;
+    margin: 2rem auto;
     display: block;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.btn:hover:active {
+    opacity: 1;
 }

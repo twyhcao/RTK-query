@@ -1,14 +1,14 @@
-import {useGetContactsQuery} from "./redux/apiSlice";
+import { useGetContactsQuery } from "../redux/apiSlice";
 
 function ContactList() {
-    const {isError, isFetching, isLoading, isSuccess, data} = useGetContactsQuery();
+    const { isError, isFetching, isLoading, isSuccess, data } = useGetContactsQuery();
 
     if (isError) {
-        return <div>Error</div>;
+        return <div className="api-error">Error</div>;
     }
 
     return (
-        <ul className={'todos'}>
+        <ul className="contacts">
             {data?.map(contact => {
                 return <li key={contact.id}>{contact.name}</li>
             })}
