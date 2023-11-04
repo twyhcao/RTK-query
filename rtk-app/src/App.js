@@ -1,25 +1,10 @@
 import ContactList from "./ContactList";
-import {createServer} from "miragejs"
 import {useCreateContactMutation} from "./apiSlice";
+import { startMockServer } from "./mocks/mockServer";
 
-let server = createServer({
-    fixtures: {
-        contacts: [
-            {id: 1, name: "Bob"},
-            {id: 2, name: "Thiago"},
-            {id: 3, name: "Alan"},
-        ],
-    },
-    routes() {
-        this.get("https://api/contacts", (schema, request) => {
-            return schema.db.contacts;
-        }, {timing: 200})
-
-        this.post("https://api/contact", (schema, request) => {
-            schema.db.contacts.insert(JSON.parse(request.requestBody))
-        }, {timing: 2000})
-    },
-})
+if (process.env.NODE_ENV === "development") {
+    startMockServer({ environment: "development", timing: 300 });
+}
 
 const names = ["Emily", "Benjamin", "Maya", "Liam", "Olivia", "Ethan", "Ava", "Noah", "Mia", "Alexander"];
 

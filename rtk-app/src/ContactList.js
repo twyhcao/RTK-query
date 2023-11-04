@@ -1,15 +1,15 @@
-import {useGetContactQuery} from "./apiSlice";
+import {useGetContactsQuery} from "./apiSlice";
 
 function ContactList() {
-    // const res = useGetContactQuery()
-    // console.log(res)
-    const {isError, isFetching, isLoading, isSuccess, data} = useGetContactQuery()
-    if (!data) {
-        return null;
+    const {isError, isFetching, isLoading, isSuccess, data} = useGetContactsQuery();
+
+    if (isError) {
+        return <div>Error</div>;
     }
+
     return (
         <ul className={'todos'}>
-            {data.map(contact => {
+            {data?.map(contact => {
                 return <li key={contact.id}>{contact.name}</li>
             })}
         </ul>
