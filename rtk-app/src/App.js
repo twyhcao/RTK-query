@@ -8,11 +8,11 @@ if (process.env.NODE_ENV === "development") {
 
 function App() {
     return (
-        <div className="container">
+        <main>
             <h1>RTK Query Contact List</h1>
             <ContactCreator />
             <ContactList />
-        </div>
+        </main>
     );
 }
 

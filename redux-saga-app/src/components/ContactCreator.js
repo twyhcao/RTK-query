@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { postData } from "../redux-saga/action";
 
-
 function ContactCreator() {
     const dispatch = useDispatch();
     const [contactName, setContactName] = useState("");
