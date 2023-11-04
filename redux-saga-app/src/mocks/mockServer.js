@@ -1,15 +1,12 @@
 import { createServer } from "miragejs";
+import contacts from "./contacts";
 
 export const startMockServer = ({ environment = "test", timing = 0 } = {}) => {
     return createServer({
         environment,
         timing,
         fixtures: {
-            contacts: [
-                { id: 1, name: "Bob" },
-                { id: 2, name: "Thiago" },
-                { id: 3, name: "Alan" },
-            ],
+            contacts
         },
         routes() {
             this.get("https://api/contacts", (schema) => {
