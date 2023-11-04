@@ -1,5 +1,4 @@
-// sagas.js
-import {takeEvery, call, put} from 'redux-saga/effects';
+import { takeEvery, call, put } from 'redux-saga/effects';
 import {
     fetchData,
     fetchDataSuccess,
@@ -12,32 +11,30 @@ import {
 
 const api = {
     fetchData: async () => {
-        try {
-            const response = await fetch('https://api/contacts');
+        const response = await fetch('https://api/contacts');
+        if (response.ok) {
             const data = await response.json();
             return data;
-        } catch (error) {
-            throw error;
         }
+        throw new Error(response.statusText);
     },
     postData: async (contact) => {
-        try {
-            const response = await fetch('https://api/contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(contact)
-            });
+        const response = await fetch('https://api/contact', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(contact)
+        });
+        if (response.ok) {
             const data = await response.json();
             return data;
-        } catch (error) {
-            throw error;
         }
+        throw new Error(response.statusText);
     },
 };
 
-function* fetchDataSaga(action) {
+function* fetchDataSaga() {
     try {
         const data = yield call(api.fetchData);
         yield put(fetchDataSuccess(data));
