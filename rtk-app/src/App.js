@@ -1,5 +1,5 @@
 import ContactList from "./ContactList";
-import {useCreateContactMutation} from "./apiSlice";
+import {useCreateContactMutation} from "./redux/apiSlice";
 import { startMockServer } from "./mocks/mockServer";
 
 if (process.env.NODE_ENV === "development") {

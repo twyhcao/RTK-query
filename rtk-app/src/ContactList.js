@@ -1,4 +1,4 @@
-import {useGetContactsQuery} from "./apiSlice";
+import {useGetContactsQuery} from "./redux/apiSlice";
 
 function ContactList() {
     const {isError, isFetching, isLoading, isSuccess, data} = useGetContactsQuery();
