@@ -10,11 +10,24 @@ const ContactList = () => {
     const isLoading = useSelector((state) => state.fetch.isLoading);
 
     useEffect(() => {
-        dispatch(fetchData());
+        dispatch(fetchData())
     }, [dispatch]);
     
     if (isError) {
-        return <div className="api-error">Error</div>
+        return (
+            <div className="api-error">
+                There was a problem loading your contacts. Please check your connection and try again.
+                <button onClick={() => dispatch(fetchData())}>Retry</button>
+            </div>
+        );
+    }
+
+    if (isLoading) {
+        return (
+            <div className="api-loading">
+                Loading contacts...
+            </div>
+        );
     }
 
     return (

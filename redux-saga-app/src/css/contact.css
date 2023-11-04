@@ -51,7 +51,7 @@ h1 {
     padding: 1rem 2rem;
 }
 
-.btn {
+.create-button {
     border: solid transparent;
     color: #3A405A;
     cursor: pointer;
@@ -64,10 +64,42 @@ h1 {
     display: block;
 }
 
-.btn:hover {
+.create-button:hover {
     opacity: 0.9;
 }
 
-.btn:hover:active {
+.create-button:hover:active {
     opacity: 1;
+}
+
+.api-loading, .api-error {
+    font-size: 1.5rem;
+    text-align: center;
+    margin: auto;
+    width: 38rem;
+    padding: 1rem 2rem;
+    line-height: 2.5rem;
+}
+
+.api-loading {
+    background-color: hsl(0, 0%, 50%, 0.1);
+}
+
+.api-error {
+    background-color: hsla(0, 100%, 50%, 0.1);
+}
+
+.api-error button {
+    border: 1px solid transparent;
+    font-size: 1.3rem;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    background: white;
+    margin: 1rem auto;
+    display: block;
+}
+
+.api-error button:hover {
+    filter: brightness(0.95);
 }

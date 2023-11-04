@@ -27,7 +27,7 @@ function ContactCreator() {
 
             />
             <button
-                className="btn"
+                className="create-button"
                 onClick={onCreateContactButtonClick}
             >
                 CREATE NEW CONTACT

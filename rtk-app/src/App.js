@@ -3,7 +3,7 @@ import { startMockServer } from "./mocks/mockServer";
 import ContactCreator from "./components/ContactCreator";
 
 if (process.env.NODE_ENV === "development") {
-    startMockServer({ environment: "development", timing: 300 });
+    startMockServer({ environment: "development", timing: 500 });
 }
 
 function App() {
