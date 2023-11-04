@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchData } from "../redux-saga/action";
+import { fetchData } from "../redux/action";
 
 const ContactList = () => {
     const dispatch = useDispatch();

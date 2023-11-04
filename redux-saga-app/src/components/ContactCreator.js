@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { postData } from "../redux-saga/action";
+import { postData } from "../redux/action";
 
 function ContactCreator() {
     const dispatch = useDispatch();
