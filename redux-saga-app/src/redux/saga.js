@@ -1,38 +1,14 @@
-import { takeEvery, call, put } from 'redux-saga/effects';
+import {call, put, takeEvery} from 'redux-saga/effects';
 import {
-    fetchData,
-    fetchDataSuccess,
-    fetchDataError,
-    postDataSuccess,
-    postDataError,
-    POST_DATA,
     FETCH_DATA,
+    fetchData,
+    fetchDataError,
+    fetchDataSuccess,
+    POST_DATA,
+    postDataError,
+    postDataSuccess,
 } from './action';
-
-const api = {
-    fetchData: async () => {
-        const response = await fetch('https://api/contacts');
-        if (response.ok) {
-            const data = await response.json();
-            return data;
-        }
-        throw new Error(response.statusText);
-    },
-    postData: async (contact) => {
-        const response = await fetch('https://api/contact', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(contact)
-        });
-        if (response.ok) {
-            const data = await response.json();
-            return data;
-        }
-        throw new Error(response.statusText);
-    },
-};
+import {api} from "./api";
 
 function* fetchDataSaga() {
     try {
