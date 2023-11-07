@@ -14,6 +14,18 @@ export const contactApi = createApi({
                 method: 'POST',
                 body: contact,
             }),
+            onQueryStarted: async (contact, { dispatch, queryFulfilled }) => {
+                const update = dispatch(contactApi.util.updateQueryData('getContacts', undefined, (draft) => {
+                    const tempId = Date.now().toString();
+                    draft.push({ ...contact, id: tempId, status: "SAVING" });
+                }));
+
+                try {
+                    await queryFulfilled;
+                } catch {
+                    update.undo();
+                }
+            },
             invalidatesTags: ['GET']
         }),
     }),

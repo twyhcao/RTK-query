@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 function ContactCreator() {
     const [addContact] = useCreateContactMutation();
+
     const [contactName, setContactName] = useState("");
 
     const onContactNameChange = (event) => {

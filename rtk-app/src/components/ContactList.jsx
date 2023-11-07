@@ -1,18 +1,19 @@
 import { useGetContactsQuery } from "../redux/apiSlice";
+import Contact from "./Contact";
 
 function ContactList() {
-    const { isError, isFetching, data, refetch } = useGetContactsQuery();
+    const { isError, isLoading, data, refetch } = useGetContactsQuery();
 
     if (isError) {
         return (
             <div className="api-error">
                 There was a problem loading your contacts. Please check your connection and try again.
-                <button onClick={refetch}>Retry</button>
+                <button className="retry-button" onClick={refetch}>Retry</button>
             </div>
         );
     }
 
-    if (isFetching) {
+    if (isLoading) {
         return (
             <div className="api-loading">
                 Loading contacts...
@@ -22,8 +23,14 @@ function ContactList() {
 
     return (
         <ul className="contacts">
-            {data?.map(contact => {
-                return <li key={contact.id}>{contact.name}</li>
+            {data?.map((contact) => {
+                return (
+                    <Contact
+                        key={contact.id}
+                        name={contact.name}
+                        status={contact.status}
+                    />
+                );
             })}
         </ul>
     );

@@ -15,7 +15,7 @@ export const startMockServer = ({ environment = "test", timing = 0 } = {}) => {
 
             this.post("https://api/contact", (schema, request) => {
                 const newContact = JSON.parse(request.requestBody);
-                return schema.db.contacts.insert(newContact);
+                return schema.db.contacts.insert({ ...newContact, status: "SAVED" });
             })
         },
     });
