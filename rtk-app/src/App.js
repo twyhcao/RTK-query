@@ -1,9 +1,11 @@
 import ContactList from "./components/ContactList";
 import { startMockServer } from "./mocks/mockServer";
+import contacts from "./mocks/contacts";
 import ContactCreator from "./components/ContactCreator";
 
 if (process.env.NODE_ENV === "development") {
-    startMockServer({ environment: "development", timing: 1000 });
+    const server = startMockServer({ environment: "development", timing: 1000 });
+    server.db.loadData({ contacts});
 }
 
 function App() {

@@ -3,6 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const contactApi = createApi({
     reducerPath: 'contactApi',
     baseQuery: fetchBaseQuery({ baseUrl: 'https://api' }),
+    tagTypes: ['GET', 'POST'],
     endpoints: (builder) => ({
         getContacts: builder.query({
             query: () => `contacts`,

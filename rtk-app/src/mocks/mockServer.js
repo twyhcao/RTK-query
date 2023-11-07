@@ -1,12 +1,13 @@
-import { createServer } from "miragejs";
-import contacts from "./contacts.js";
+import { createServer, Factory } from "miragejs";
 
 export const startMockServer = ({ environment = "test", timing = 0 } = {}) => {
     return createServer({
         environment,
         timing,
-        fixtures: {
-            contacts,
+        factories: {
+            contact: Factory.extend({
+                status: "SAVED"
+            })
         },
         routes() {
             this.get("https://api/contacts", (schema) => {
