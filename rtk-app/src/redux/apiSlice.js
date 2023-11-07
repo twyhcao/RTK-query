@@ -15,19 +15,13 @@ export const contactApi = createApi({
                 method: 'POST',
                 body: contact,
             }),
-            onQueryStarted: async (contact, { dispatch, queryFulfilled }) => {
-                const update = dispatch(contactApi.util.updateQueryData('getContacts', undefined, (draft) => {
+            onQueryStarted: async (contact, { dispatch }) => {
+                dispatch(contactApi.util.updateQueryData('getContacts', undefined, (draftContacts) => {
                     const tempId = Date.now().toString();
                     const newContact = { ...contact, id: tempId, status: "SAVING" };
 
-                    return draft ? [...draft, newContact] : [newContact]
+                    draftContacts?.push(newContact);
                 }));
-
-                try {
-                    await queryFulfilled;
-                } catch {
-                    update.undo();
-                }
             },
             invalidatesTags: ['GET']
         }),
