@@ -57,7 +57,7 @@ h1 {
     color: hsl(0, 0%, 60%);
 }
 
-.create-button {
+.primary-button {
     border: solid transparent;
     color: #3A405A;
     cursor: pointer;
@@ -70,11 +70,11 @@ h1 {
     display: block;
 }
 
-.create-button:hover {
+.primary-button:hover {
     opacity: 0.9;
 }
 
-.create-button:hover:active {
+.primary-button:hover:active {
     opacity: 1;
 }
 
@@ -95,7 +95,7 @@ h1 {
     background-color: hsla(0, 100%, 50%, 0.1);
 }
 
-.retry-button {
+.secondary-button {
     border: 1px solid transparent;
     font-size: 1.3rem;
     cursor: pointer;
@@ -106,6 +106,6 @@ h1 {
     margin: 1rem auto;
 }
 
-.retry-button:hover {
+.secondary-button:hover {
     filter: brightness(0.95);
 }

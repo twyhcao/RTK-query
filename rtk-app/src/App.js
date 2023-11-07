@@ -4,7 +4,7 @@ import contacts from "./mocks/contacts";
 import ContactCreator from "./components/ContactCreator";
 
 if (process.env.NODE_ENV === "development") {
-    const server = startMockServer({ environment: "development", timing: 1000 });
+    const server = startMockServer({ environment: "development", timing: 800 });
     server.db.loadData({ contacts});
 }
 

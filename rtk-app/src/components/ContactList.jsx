@@ -8,7 +8,7 @@ function ContactList() {
         return (
             <div className="api-error">
                 There was a problem loading your contacts. Please check your connection and try again.
-                <button className="retry-button" onClick={refetch}>Retry</button>
+                <button className="secondary-button" onClick={refetch}>Retry</button>
             </div>
         );
     }

@@ -1,17 +1,14 @@
-import {configureStore} from '@reduxjs/toolkit'
-import {contactApi} from "./apiSlice";
+import { configureStore } from '@reduxjs/toolkit';
+import { setupListeners } from '@reduxjs/toolkit/query';
 import rtkLogger from '../logging/rtkLogger';
+import { contactApi } from "./apiSlice";
 
 export const store = configureStore({
     reducer: {
         [contactApi.reducerPath]: contactApi.reducer,
     },
-    middleware: (getDefaultMiddleware) => {
-        const middleware = getDefaultMiddleware().concat(contactApi.middleware);
-
-        if (process.env.NODE_ENV !== "test") {
-            middleware.push(rtkLogger);
-        }
-        return middleware;
-    }
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(contactApi.middleware, rtkLogger)
 });
+
+setupListeners(store.dispatch);

@@ -10,7 +10,7 @@ fetchMock.enableMocks();
 describe("ContactList test using mocked fetch", () => {
     beforeEach(() => {
         fetchMock.resetMocks();
-        store.dispatch(contactApi.util.resetApiState())
+        store.dispatch(contactApi.util.resetApiState());
     });
 
     it("should display the list of contacts from a successful API call", async () => {
