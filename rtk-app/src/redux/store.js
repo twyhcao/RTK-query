@@ -6,6 +6,12 @@ export const store = configureStore({
     reducer: {
         [contactApi.reducerPath]: contactApi.reducer,
     },
-    middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(contactApi.middleware, rtkLogger),
+    middleware: (getDefaultMiddleware) => {
+        const middleware = getDefaultMiddleware().concat(contactApi.middleware);
+
+        if (process.env.NODE_ENV !== "test") {
+            middleware.push(rtkLogger);
+        }
+        return middleware;
+    }
 });
