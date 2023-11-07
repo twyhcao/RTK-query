@@ -102,6 +102,8 @@ h1 {
     padding: 0.5rem 1rem;
     text-align: center;
     background: white;
+    display: block;
+    margin: 1rem auto;
 }
 
 .retry-button:hover {
