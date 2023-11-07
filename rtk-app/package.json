@@ -38,6 +38,7 @@
     ]
   },
   "devDependencies": {
+    "jest-fetch-mock": "^3.0.3",
     "miragejs": "^0.1.48"
   }
 }

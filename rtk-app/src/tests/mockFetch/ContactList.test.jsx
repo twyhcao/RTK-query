@@ -7,7 +7,7 @@ import fetchMock from "jest-fetch-mock";
 
 fetchMock.enableMocks();
 
-describe("ContactList test using a mocked fetch function", () => {
+describe("ContactList test using mocked fetch", () => {
     beforeEach(() => {
         fetchMock.resetMocks();
         store.dispatch(contactApi.util.resetApiState())

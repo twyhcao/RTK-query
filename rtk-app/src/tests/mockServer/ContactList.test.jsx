@@ -10,8 +10,8 @@ describe("ContactList test using a mock server", () => {
     let server;
 
     beforeEach(() => {
+        server = startMockServer();
         store.dispatch(contactApi.util.resetApiState());
-        server = startMockServer({ environment: "test" });
     });
 
     afterEach(() => {

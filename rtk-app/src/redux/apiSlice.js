@@ -18,7 +18,9 @@ export const contactApi = createApi({
             onQueryStarted: async (contact, { dispatch, queryFulfilled }) => {
                 const update = dispatch(contactApi.util.updateQueryData('getContacts', undefined, (draft) => {
                     const tempId = Date.now().toString();
-                    draft.push({ ...contact, id: tempId, status: "SAVING" });
+                    const newContact = { ...contact, id: tempId, status: "SAVING" };
+
+                    return draft ? [...draft, newContact] : [newContact]
                 }));
 
                 try {
