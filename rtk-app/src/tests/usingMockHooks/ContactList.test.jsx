@@ -4,13 +4,14 @@ import * as apiSlice from "../../redux/apiSlice";
 
 describe("ContactList test using mocked RTK Query hooks", () => {
     afterEach(() => {
-        jest.clearAllMocks();
+        jest.restoreAllMocks();
     })
 
     it("should display the list of contacts from a successful API call", async () => {
         jest.spyOn(apiSlice, 'useGetContactsQuery').mockImplementationOnce(() => {
             return {
                 isLoading: false,
+                isFetching: false,
                 isError: false,
                 data: [
                     { id: "1", name: "Bob", status: "SAVED" },
@@ -32,7 +33,7 @@ describe("ContactList test using mocked RTK Query hooks", () => {
 
     it("should display an error message after a failed API call", async () => {
         jest.spyOn(apiSlice, 'useGetContactsQuery').mockImplementationOnce(() => {
-            return { isLoading: false, isError: true, data: undefined }
+            return { isLoading: false, isFetching: false, isError: true, data: undefined }
         });
 
         render(<ContactList />);
