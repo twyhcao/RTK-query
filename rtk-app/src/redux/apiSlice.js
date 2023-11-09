@@ -15,13 +15,21 @@ export const contactApi = createApi({
                 method: 'POST',
                 body: contact,
             }),
-            onQueryStarted: async (contact, { dispatch }) => {
-                dispatch(contactApi.util.updateQueryData('getContacts', undefined, (draftContacts) => {
+            onQueryStarted: async (contact, { dispatch, queryFulfilled }) => {
+                // Do something when the query starts (in this example we're adding our new contact to the cache)
+                dispatch(contactApi.util.updateQueryData("getContacts", undefined, (draftContacts) => {
                     const tempId = Date.now().toString();
                     const newContact = { ...contact, id: tempId, status: "SAVING" };
 
                     draftContacts?.push(newContact);
                 }));
+
+                try {
+                    await queryFulfilled;
+                    // Do something when the query succeeds
+                } catch {
+                    // Do something when the query fails
+                }
             },
             invalidatesTags: ['GET']
         }),
